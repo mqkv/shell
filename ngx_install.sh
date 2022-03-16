@@ -11,11 +11,9 @@ dir=`ls | grep nginx | awk -F '.tar' '{print $1}'`
 version=`ls | grep nginx`
 
 echo "--- 安装依赖环境"
-
 yum -y install gcc gcc-c++ automake pcre pcre-devel zlib zlib-devel openssl openssl-devel jemalloc jemalloc-devel
 
 echo "--- 解压文件至/usr/local/目录"
-sleep 2
 tar -xf ./$version -C /usr/local/
 
 echo "--- 创建Nginx用户"
