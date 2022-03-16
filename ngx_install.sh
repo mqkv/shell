@@ -12,7 +12,7 @@ version=`ls | grep nginx`
 
 echo "--- 安装依赖环境"
 
-yum -y install gcc gcc-c++ automake pcre pcre-devel zlib zlib-devel openssl openssl-devel
+yum -y install gcc gcc-c++ automake pcre pcre-devel zlib zlib-devel openssl openssl-devel jemalloc jemalloc-devel
 
 echo "--- 解压文件至/usr/local/目录"
 sleep 2
@@ -64,7 +64,8 @@ cd /usr/local/$dir && \
   --with-stream_realip_module \
   --with-stream_ssl_module \
   --with-stream_ssl_preread_module \
-  --with-pcre && \
+  --with-pcre \
+  --with-ld-opt="-ljemalloc" && \
 make && make install
 
 
